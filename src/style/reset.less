@@ -1,0 +1,27 @@
+/*
+ * @Author: wangkaiwd
+ * @Date: 2018-06-02 15:02:36
+ * @Last Modified by: wangakiwd
+ * @Last Modified time: 2018-06-02 15:12:21
+ * @Desc: 简单的css初始化样式
+ */
+
+html {
+  box-sizing: border-box;
+}
+body {
+  border: 1px solid #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// * 无法选择到伪元素，设置为inherit属性可以继承到html的box-sizing属性
+// 当想要为元素设置为box-size:content-box的时候，可以直接将所有子元素都设置为该盒模型，防止结构混乱
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
