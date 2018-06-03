@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addToDo } from '../redux/action'
+import { addTodo } from '../redux/action'
 import { Input, Button, Form, message } from 'antd'
 const FormItem = Form.Item;
 
@@ -48,14 +48,14 @@ const FormItem = Form.Item;
 
 // 无状态组件接收一个参数：props
 const AddToDo = (props) => {
-  let input;
   const handleSubmit = (e) => {
-    console.log('input', input);
+    let inp = document.getElementsByClassName('input')[0];
     e.preventDefault();
-    // if (!input.input.value.trim()) {
-    //   message.warning('内容不能为空!!');
-    // }
-    // dispatch(addTodo(input.input.value))
+    if (!inp.value.trim()) {
+      message.warning('内容不能为空!!');
+    }
+    // console.log(props.dispatch(addTodo(inp.value)));
+    props.dispatch(addTodo(inp.value))
     props.form.resetFields();
   }
   const { getFieldDecorator } = props.form
@@ -68,7 +68,8 @@ const AddToDo = (props) => {
             <Input
               placeholder="输入......↩"
               style={{ width: '200px' }}
-              ref={(inp) => input = inp}
+              // ref={(node) => inp.input = node}
+              className="input"
             />
           )}
         </FormItem>

@@ -4,13 +4,19 @@ import { List, Icon } from 'antd'
 import './todoList.less'
 
 const todoList = ({ todos, toggleTodo }) => {
-  // console.log('todos', props);
+  // 获取操作列表
+  const todoList = () => {
+    const dataSource = [];
+    todos.map(todo => dataSource.push(todo.text))
+    // console.log('dataSource', dataSource);
+    return dataSource
+  }
   return (
     <div className="list" style={{ width: '327px' }}>
       <List
         size="small"
         bordered
-        dataSource={todos}
+        dataSource={todoList()}
         renderItem={item => <List.Item>{item} <Icon type="delete" /></List.Item>}
       />
     </div>
